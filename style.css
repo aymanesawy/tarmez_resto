@@ -1,0 +1,194 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Mobile Preview — درجة بدرجة من الواجهة المرجعية (zlenu.com)
+   كل قيمة لونية/مقاس أدناه مستخرجة من ملف site.css الخاص بالمرجع،
+   أو قيمة مرئية مقاسة (مشار إليها بـ ~).
+   ═══════════════════════════════════════════════════════════════════ */
+
+body.pv-site{
+  /* ── Color System (مستخرَجة حرفيًا من المرجع) ── */
+  --night:#150D16;      /* Primary dark / الخلفية الليلية */
+  --night-2:#22152A;    /* سطح ليلي ثانوي */
+  --night-3:#2E1C37;    /* سطح ليلي ثالث */
+  --rose:#EF3982;       /* Accent أساسي / زرpri */
+  --rose-hover:#e32a75; /* hover لزرpri */
+  --ember:#FF6A4D;      /* Accent تدرجي */
+  --violet:#9B4DE0;     /* Accent تدرجي */
+  --ink:#17121C;        /* Text Primary على الفاتح */
+  --mute:#6F667A;       /* Text Secondary */
+  --lilac:#F6F3FA;      /* Surface (قسم فاتح) */
+  --line:#ECE7F1;       /* Border */
+  --cream:#fffdfb;      /* سطح التذكرة */
+  --grad:linear-gradient(120deg,#FF6A4D 0%,#EF3982 48%,#9B4DE0 100%);
+  /* ظلال */
+  --sh-pri:0 12px 30px rgba(239,57,130,.35);   /* ظل زرpri */
+  --sh-pop:0 30px 60px rgba(21,13,22,.25);     /* ظل بطاقة بارزة */
+  --sh-phone:0 0 0 1.5px rgba(255,255,255,.08),0 50px 100px rgba(0,0,0,.55),inset 0 0 0 2px rgba(255,255,255,.05);
+  /* نصوص الليل */
+  --night-txt:#D9CDE0;   /* lead ثانوي */
+  --night-mute:#B3A6BA;  /* نص ثانوي على الليل */
+  --night-soft:#CBBFD1;  /* عناصر تحكم غير مفعّلة */
+  /* ── Typography (Cairo قمة بذروة المرجع) ── */
+  --f:Cairo,system-ui,sans-serif;
+  background:#fff;color:var(--ink);font-family:var(--f);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
+body.pv-site h1,body.pv-site h2,body.pv-site h3,body.pv-site h4,body.pv-site button{font-family:var(--f);color:inherit}
+.num{font-feature-settings:"tnum"}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+*{box-sizing:border-box}
+
+.pv-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ── Nav ── */
+.pv-nav{position:sticky;top:0;z-index:60;transition:background .25s,border-color .25s}
+.pv-nav .in{display:flex;align-items:center;gap:26px;height:76px}
+.pv-nav.dark{background:rgba(21,13,22,.72);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid rgba(255,255,255,.06);color:#fff}
+.pv-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700;font-size:16px;flex:none}
+.pv-brand-mark{width:34px;height:34px;border-radius:11px;background:var(--grad);display:grid;place-items:center;color:#fff}
+.pv-brand-mark svg{width:18px;height:18px}
+.pv-links{display:flex;gap:2px}
+.pv-links a{color:inherit;opacity:.78;font-weight:500;font-size:15px;padding:8px 12px;border-radius:10px;text-decoration:none;transition:opacity .15s,background .15s}
+.pv-links a:hover{opacity:1;background:rgba(127,127,127,.12)}
+.pv-nav .sp{flex:1}
+.pv-burger{display:none;border:0;background:rgba(127,127,127,.14);color:inherit;width:44px;height:44px;border-radius:13px;cursor:pointer}
+.pv-burger svg{width:20px;height:20px}
+@media (max-width:991px){
+  .pv-links{display:none}
+  .pv-burger{display:grid;place-items:center}
+  .pv-nav .in{gap:12px}
+  .pv-links.open{display:flex;position:absolute;top:76px;inset-inline:0;flex-direction:column;background:var(--night);padding:12px 20px 20px;margin:0;color:#fff}
+}
+
+/* ── Buttons — نفس نظام s-btn ── */
+.pv-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:50px;padding:0 24px;border-radius:15px;font-weight:600;font-size:15.5px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap;font-family:var(--f);color:var(--ink);transition:transform .15s,box-shadow .2s,background .2s,border-color .2s}
+.pv-btn:active{transform:scale(.98)}
+.pv-btn svg{width:17px;height:17px;flex:none}
+.pv-btn.pri{background:var(--rose);color:#fff;box-shadow:var(--sh-pri)}
+.pv-btn.pri:hover{background:var(--rose-hover);color:#fff}
+.pv-btn.ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.18)}
+.pv-btn.ghost:hover{background:rgba(255,255,255,.14);color:#fff}
+.pv-btn.sm{height:42px;padding:0 18px;font-size:14.5px;border-radius:13px}
+
+/* ── Stage: خلفية ليلية + توهجتان radial (تطابق s-stage) ── */
+.pv-stage{background:var(--night);color:#fff;position:relative;overflow:hidden;margin-top:-76px;padding:150px 0 100px}
+.pv-stage::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 460px at 18% 30%,rgba(239,57,130,.22),transparent 70%),radial-gradient(640px 480px at 85% 80%,rgba(155,77,224,.2),transparent 70%);pointer-events:none}
+.pv-stage .grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.pv-stage h1{font-size:clamp(40px,5.6vw,72px);line-height:1.2;font-weight:800;margin:0 0 18px;color:#fff}
+.pv-stage h1 span{display:block;font-weight:400;color:var(--night-txt);letter-spacing:-.015em}
+.pv-stage .lead{font-size:clamp(18px,1.9vw,22px);color:var(--night-txt);max-width:600px;line-height:1.8;margin:0;font-weight:500}
+.pv-facts{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px;color:var(--night-mute);font-size:14.5px}
+.pv-facts b{display:block;color:#fff;font-size:19px;font-weight:600}
+@media (max-width:991px){.pv-stage{padding:110px 0 60px}.pv-stage .grid{grid-template-columns:1fr;gap:44px}}
+
+/* chip "Live" — بأسلوب s-new */
+.pv-new{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:6px 14px 6px 6px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:#F3E9F6;font-size:14px;font-weight:600;text-decoration:none;max-width:100%}
+[dir=rtl] .pv-new{padding:6px 6px 6px 14px}
+.pv-new>span{background:var(--grad);color:#fff;border-radius:99px;padding:3px 11px;font-size:12.5px;font-weight:800;flex:none;letter-spacing:.04em}
+.pv-new-arrow{width:15px;height:15px;flex:none}
+.pv-new:hover{background:rgba(255,255,255,.12);color:#fff}
+.pv-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.pv-note{margin:22px 0 0;color:#9D8FA5;font-size:14.5px;font-weight:500;display:flex;flex-direction:column;gap:4px}
+.pv-note b{font-weight:600;color:#C9BCD0;display:inline-flex;align-items:center;gap:7px}
+.pv-note span{color:#7F7387;font-size:13.5px}
+
+/* ── Device column ── */
+.pv-device{display:flex;flex-direction:column;align-items:center;gap:18px;position:relative;min-width:0}
+
+/* ═ Hardware frame — إطار الهاتف الواقعي ═ */
+.pv-phone{--w:330px;width:var(--w);height:calc(var(--w) * 2.05);border-radius:50px;padding:11px;background:linear-gradient(145deg,#2c2230,#09070b 40%,#1c1520);box-shadow:var(--sh-phone);position:relative;transition:width .35s ease,height .35s ease}
+.pv-phone .scr{width:100%;height:100%;border-radius:40px;overflow:hidden;background:#fff;position:relative}
+
+/* الشريط العلوي داخل الشاشة (ساعة + إشارات) */
+.sbar{height:44px;display:flex;align-items:center;justify-content:space-between;padding:8px 26px 0;font-size:13px;font-weight:600;color:#111;background:#fff;position:absolute;top:0;inset-inline:0;z-index:4}
+.sbar .sbar-ics{display:flex;align-items:center}
+.sbar svg{height:11px;width:auto;margin-inline-start:4.5px}
+
+/* Dynamic Island */
+.pv-phone .isl{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:96px;height:27px;border-radius:20px;background:#000;z-index:5}
+
+/* الصفحة تُعرض أسفل الشريط العلوي بمقياس k */
+.pv-phone iframe,.d-view iframe{border:0;transform-origin:0 0;position:absolute;top:0;left:0;width:100%;height:100%;background:#fff;z-index:1}
+
+/* Loader — نفس سلوك s-ld في المرجع */
+.pv-phone .ld,.d-view .ld{position:absolute;inset:0;display:grid;place-items:center;background:#fff;z-index:3;transition:opacity .3s}
+.pv-phone .ld.off,.d-view .ld.off{opacity:0;pointer-events:none}
+.ld-spin{width:34px;height:34px;border-radius:50%;border:3px solid #eee;border-top-color:var(--rose);animation:pvspin .8s linear infinite;display:block}
+.ld-t{font-size:13px;color:#6b6170;font-weight:600;margin:0}
+.ld-x{font-size:13px;color:#6b6170;display:grid;gap:10px;justify-items:center}
+@keyframes pvspin{to{transform:rotate(360deg)}}
+
+/* ═ Desktop frame — نافذة كمبيوتر ═ */
+.pv-desktop{display:flex;flex-direction:column;width:min(100%,920px);border-radius:18px;background:#17121C;border:1px solid rgba(255,255,255,.1);box-shadow:0 50px 100px rgba(0,0,0,.55),0 0 0 1.5px rgba(255,255,255,.08);overflow:hidden}
+.pv-desktop[hidden]{display:none}
+body.pv-desktop-on .pv-phone{display:none}
+.d-titlebar{height:42px;display:flex;align-items:center;gap:8px;padding:0 16px;background:var(--night-2);flex:none}
+.d-titlebar .dot{width:11px;height:11px;border-radius:50%}
+.dot.r{background:#FF5F57}.dot.y{background:#FEBC2E}.dot.g{background:#28C840}
+.d-addr{margin-inline-start:10px;flex:1;min-width:0;background:rgba(255,255,255,.08);border-radius:8px;padding:5px 12px;font-size:11.5px;color:#CBBFD1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d-view{position:relative;width:100%;overflow:hidden;background:#fff}
+
+/* ═ صفحات الموقع (شريط تبويبات) — بأسلوب s-roles ═ */
+.pv-pages{display:inline-flex;gap:4px;padding:5px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);max-width:100%;overflow:auto}
+.pv-pages button{border:0;background:transparent;color:var(--night-soft);font-weight:600;font-size:14px;padding:9px 16px;border-radius:12px;display:flex;align-items:center;gap:7px;font-family:var(--f);cursor:pointer;transition:background .2s,color .2s;min-height:42px;white-space:nowrap}
+.pv-pages button svg{width:15px;height:15px;flex:none}
+.pv-pages button:hover{color:#fff}
+.pv-pages button.on{background:#fff;color:var(--ink)}
+.pv-pages button[aria-selected="true"]{background:#fff;color:var(--ink)}
+
+/* ═ شريط أدوات المعاينة ═ */
+.pv-roles{display:inline-flex;gap:4px;padding:5px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);max-width:100%;flex-wrap:wrap}
+.pv-roles button{border:0;background:transparent;color:var(--night-soft);font-weight:600;font-size:14px;padding:9px 15px;border-radius:12px;display:flex;align-items:center;gap:7px;font-family:var(--f);cursor:pointer;transition:background .2s,color .2s;min-height:42px}
+.pv-roles button svg{width:15px;height:15px;flex:none}
+.pv-roles button:hover{color:#fff;background:rgba(255,255,255,.08)}
+.pv-roles button.on{background:#fff;color:var(--ink)}
+.pv-select{display:inline-flex;align-items:center;gap:7px;color:var(--night-soft);font-weight:600;font-size:14px;padding:0 6px;min-height:42px}
+.pv-select svg{width:15px;height:15px;flex:none}
+.pv-select select{appearance:none;-webkit-appearance:none;background:transparent;border:0;color:inherit;font:inherit;font-family:var(--f);cursor:pointer;padding:0 4px;min-height:32px;max-width:170px}
+.pv-select select option{color:var(--ink);background:#fff;font-family:var(--f)}
+.pv-roles button:disabled,.pv-select select:disabled{opacity:.45;cursor:not-allowed}
+
+.pv-cap{color:var(--night-mute);font-size:14px;text-align:center;max-width:380px;min-height:48px;line-height:1.7}
+
+/* ═ تذكرة ديكور — بأسلوب s-ticket (حافة سنّون + ميلان) ═ */
+.pv-ticket{position:absolute;top:300px;inset-inline-end:-64px;width:188px;background:var(--cream);color:#1d1720;border-radius:6px 6px 0 0;padding:14px 14px 18px;font-size:12.5px;box-shadow:0 24px 50px rgba(0,0,0,.4);transform:rotate(5deg);animation:ticklein 1s cubic-bezier(.2,.8,.2,1) .8s both;z-index:4}
+[dir="rtl"] .pv-ticket{transform:rotate(-5deg)}
+.pv-ticket::after{content:"";position:absolute;inset-inline:0;bottom:-10px;height:10px;background:linear-gradient(-45deg,transparent 7px,#fffdfb 0) 0 0/14px 10px,linear-gradient(45deg,transparent 7px,#fffdfb 0) 0 0/14px 10px}
+.pv-ticket b{font-size:14px;display:flex;justify-content:space-between}
+.pv-ticket hr{border:0;border-top:1px dashed #cbbfd0;margin:8px 0;opacity:1}
+.pv-ticket .r{display:flex;justify-content:space-between;align-items:center;line-height:1.9;gap:6px}
+.pv-ticket .st{display:inline-block;margin-top:6px;background:#FFF1D6;color:#9A5B00;border-radius:999px;padding:1px 10px;font-weight:700;font-size:11.5px}
+@keyframes ticklein{from{opacity:0;transform:translateY(30px) rotate(12deg)}to{opacity:1;transform:rotate(5deg)}}
+@media (max-width:1100px){.pv-ticket{display:none}}
+@media (prefers-reduced-motion:reduce){.pv-ticket{animation:none}}
+@media (max-width:420px){.pv-phone{--w:290px}.pv-pages button{padding:8px 11px;font-size:13px}.pv-roles button{padding:8px 11px;font-size:13px}}
+
+/* ── أعمدة التذييل داخل الفوتر ── */
+.cols{display:grid;grid-template-columns:1.4fr repeat(2,1fr);gap:30px}
+@media (max-width:800px){.cols{grid-template-columns:1fr}}
+
+/* ── قسم فاتح — بروح s-sec.tint + s-bento ── */
+.pv-sec{padding:110px 0}
+.pv-sec.tint{background:var(--lilac)}
+.pv-head{max-width:720px;margin:0 0 54px}
+.pv-head h2{font-size:clamp(32px,3.8vw,50px);font-weight:800;line-height:1.25;margin:0 0 14px}
+.pv-head p{color:var(--mute);font-size:18px;line-height:1.85;margin:0}
+@media (max-width:991px){.pv-sec{padding:72px 0}.pv-head{margin-bottom:36px}}
+.pv-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:991px){.pv-bento{grid-template-columns:1fr}}
+.pv-tile{border-radius:24px;padding:26px;background:#fff;border:1px solid var(--line);position:relative;overflow:hidden;display:flex;flex-direction:column}
+.pv-tile h3{font-size:20px;font-weight:700;margin:0 0 6px}
+.pv-tile p{color:var(--mute);font-size:14.5px;line-height:1.75;margin:0}
+
+/* ── Footer — بروح s-foot ── */
+.pv-foot{padding:70px 0 34px;color:var(--mute);font-size:14.5px}
+.pv-foot h5{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 12px}
+.pv-foot a,.pv-foot .as-link{display:flex;gap:8px;align-items:center;color:var(--mute);text-decoration:none;padding:4px 0;background:none;border:0;font:inherit;cursor:pointer;width:fit-content}
+.pv-foot a:hover,.pv-foot .as-link:hover{color:var(--rose)}
+.pv-foot .note{max-width:300px;margin:12px 0 0;font-size:13.5px}
+.pv-foot .bot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:44px;padding-top:22px;font-size:13.5px}
+.mt-3{margin-top:12px}
+
+/* ── Toast ── */
+.pv-toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,14px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:80;box-shadow:var(--sh-pop)}
+.pv-toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ── شاشات صغيرة جدًا: الأساس 330px يتقلص تلقائيًا ── */
+@media (max-width:359px){.pv-phone{--w:264px}}
